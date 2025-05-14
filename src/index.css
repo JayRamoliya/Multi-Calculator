@@ -1,10 +1,11 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 40% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -13,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 221.2 83% 53.3%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -30,24 +31,33 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 221.2 83% 53.3%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Calculator specific colors */
+    --calculator-display: 220 20% 97%;
+    --calculator-display-text: 222 47% 11.2%;
+    --calculator-button: 220 14% 95%;
+    --calculator-button-hover: 220 14% 90%;
+    --calculator-button-active: 220 14% 85%;
+    --calculator-operator: 221.2 83% 53.3%;
+    --calculator-operator-hover: 221.2 83% 48.3%;
+    --calculator-operator-active: 221.2 83% 43.3%;
+    --calculator-equals: 221.2 83% 53.3%;
+    --calculator-equals-hover: 221.2 83% 48.3%;
+    --calculator-equals-active: 221.2 83% 43.3%;
+    --calculator-clear: 5 90% 58%;
+    --calculator-clear-hover: 5 90% 53%;
+    --calculator-clear-active: 5 90% 48%;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -61,7 +71,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -78,7 +88,24 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 224.3 76.3% 48%;
+
+    /* Calculator specific colors in dark mode */
+    --calculator-display: 220 20% 10%;
+    --calculator-display-text: 210 40% 98%;
+    --calculator-button: 220 14% 20%;
+    --calculator-button-hover: 220 14% 25%;
+    --calculator-button-active: 220 14% 30%;
+    --calculator-operator: 217.2 91.2% 59.8%;
+    --calculator-operator-hover: 217.2 91.2% 64.8%;
+    --calculator-operator-active: 217.2 91.2% 69.8%;
+    --calculator-equals: 217.2 91.2% 59.8%;
+    --calculator-equals-hover: 217.2 91.2% 64.8%;
+    --calculator-equals-active: 217.2 91.2% 69.8%;
+    --calculator-clear: 5 90% 48%;
+    --calculator-clear-hover: 5 90% 53%;
+    --calculator-clear-active: 5 90% 58%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -97,5 +124,25 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  .calculator-button {
+    @apply relative flex items-center justify-center text-lg md:text-xl font-medium rounded-md bg-calculator-button text-foreground transition-all hover:bg-calculator-button-hover active:bg-calculator-button-active focus:outline-none;
+  }
+
+  .calculator-operator {
+    @apply calculator-button bg-calculator-operator text-white hover:bg-calculator-operator-hover active:bg-calculator-operator-active;
+  }
+
+  .calculator-equals {
+    @apply calculator-button bg-calculator-equals text-white hover:bg-calculator-equals-hover active:bg-calculator-equals-active;
+  }
+
+  .calculator-clear {
+    @apply calculator-button bg-calculator-clear text-white hover:bg-calculator-clear-hover active:bg-calculator-clear-active;
+  }
+
+  .calculator-display {
+    @apply bg-calculator-display text-calculator-display-text rounded-lg shadow-inner p-4 overflow-x-auto overflow-y-hidden text-right;
   }
 }

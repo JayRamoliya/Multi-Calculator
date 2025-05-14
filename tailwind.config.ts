@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -24,6 +25,22 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				calculator: {
+					display: 'hsl(var(--calculator-display))',
+					'display-text': 'hsl(var(--calculator-display-text))',
+					button: 'hsl(var(--calculator-button))',
+					'button-hover': 'hsl(var(--calculator-button-hover))',
+					'button-active': 'hsl(var(--calculator-button-active))',
+					operator: 'hsl(var(--calculator-operator))',
+					'operator-hover': 'hsl(var(--calculator-operator-hover))',
+					'operator-active': 'hsl(var(--calculator-operator-active))',
+					equals: 'hsl(var(--calculator-equals))',
+					'equals-hover': 'hsl(var(--calculator-equals-hover))',
+					'equals-active': 'hsl(var(--calculator-equals-active))',
+					clear: 'hsl(var(--calculator-clear))',
+					'clear-hover': 'hsl(var(--calculator-clear-hover))',
+					'clear-active': 'hsl(var(--calculator-clear-active))',
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -70,25 +87,23 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'button-press': {
+					'0%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(0.95)' },
+					'100%': { transform: 'scale(1)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'button-press': 'button-press 0.2s ease-out'
 			}
 		}
 	},
