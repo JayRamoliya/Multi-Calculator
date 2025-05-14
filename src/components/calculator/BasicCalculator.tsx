@@ -5,7 +5,7 @@ import CalculatorButton from './CalculatorButton';
 import CalculatorDisplay from './CalculatorDisplay';
 import { calculate, createHistoryItem, OperationType } from '@/utils/calculatorUtils';
 import { useHistory } from '@/context/HistoryContext';
-import { Backspace } from 'lucide-react';
+import { Delete } from 'lucide-react';
 
 interface BasicCalculatorProps {
   className?: string;
@@ -189,7 +189,7 @@ const BasicCalculator: React.FC<BasicCalculatorProps> = ({
           onClick={backspace}
           aria-label="Backspace"
         >
-          <Backspace className="h-4 w-4" />
+          <Delete className="h-4 w-4" />
           <span>Backspace</span>
         </button>
       </div>

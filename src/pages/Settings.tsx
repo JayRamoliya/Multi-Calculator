@@ -2,7 +2,7 @@
 import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ThemeToggle } from '@/components/calculator/ThemeToggle';
+import ThemeToggle from '@/components/calculator/ThemeToggle';
 
 const Settings = () => {
   return (
