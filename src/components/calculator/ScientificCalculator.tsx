@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from '@/context/HistoryContext';
 import { createHistoryItem } from '@/utils/calculatorUtils';
-import { toast } from '@/components/ui/use-toast';
+import { useToast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
 import CalculatorDisplay from './CalculatorDisplay';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -26,7 +26,8 @@ const ScientificCalculator: React.FC<ScientificCalculatorProps> = ({ className }
   const [waitingForOperand, setWaitingForOperand] = useState(false);
   const [angleMode, setAngleMode] = useState<'deg' | 'rad'>('deg');
   
-  const { addHistoryItem } = useHistory();
+  const { addToHistory } = useHistory();
+  const { toast } = useToast();
 
   const clearAll = () => {
     setDisplay('0');
@@ -175,7 +176,7 @@ const ScientificCalculator: React.FC<ScientificCalculatorProps> = ({ className }
       setWaitingForOperand(true);
 
       // Add to calculator history
-      addHistoryItem(createHistoryItem(expression, String(result)));
+      addToHistory(createHistoryItem(expression, String(result)));
     } catch (error) {
       toast({
         title: "Calculation Error",
@@ -217,7 +218,7 @@ const ScientificCalculator: React.FC<ScientificCalculatorProps> = ({ className }
     const result = String(newValue);
     
     // Add to calculator history
-    addHistoryItem(createHistoryItem(expression, result));
+    addToHistory(createHistoryItem(expression, result));
     
     setDisplay(result);
     setPreviousDisplay('');
@@ -268,8 +269,9 @@ const ScientificCalculator: React.FC<ScientificCalculatorProps> = ({ className }
     <div className={`grid grid-cols-1 gap-4 ${className}`}>
       <div className="col-span-1">
         <CalculatorDisplay 
-          value={display} 
-          expression={operation ? `${previousDisplay} ${operation}` : ''} 
+          primaryValue={display} 
+          secondaryValue={previousDisplay}
+          operation={operation || undefined} 
         />
       </div>
       
